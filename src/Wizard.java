@@ -3,4 +3,5 @@ class Wizard extends Character {
 
 
 
+
 }

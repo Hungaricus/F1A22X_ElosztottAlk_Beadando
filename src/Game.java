@@ -46,6 +46,7 @@ public class Game {
         } catch (GameOverException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
 

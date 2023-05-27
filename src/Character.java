@@ -14,12 +14,14 @@ abstract class Character implements Combatant {
     public void move() {
         Random r = new Random();
         this.position = r.nextInt(3);  // random kezdőhely
+
     }
 
     @Override
     public void fight(Combatant opponent) {
         if (!(opponent instanceof Character)) {
             throw new IllegalArgumentException("Opponent must be a Character");
+
         }
         Random r = new Random();
         this.health -= r.nextInt(6) + 1;  // d6 damage
