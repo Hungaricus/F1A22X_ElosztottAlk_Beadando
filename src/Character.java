@@ -1,6 +1,6 @@
 import java.util.Random;
 
-abstract class Character {
+abstract class Character implements Combatant {
     private int health;
     private int position;
 
@@ -10,15 +10,20 @@ abstract class Character {
         this.position = r.nextInt(3); // random kezdőhely
     }
 
+    @Override
     public void move() {
         Random r = new Random();
         this.position = r.nextInt(3);  // random kezdőhely
     }
 
-    public void fight(Character opponent) {
+    @Override
+    public void fight(Combatant opponent) {
+        if (!(opponent instanceof Character)) {
+            throw new IllegalArgumentException("Opponent must be a Character");
+        }
         Random r = new Random();
-        this.health -= r.nextInt(6) + 1;  // sebzés de itt is kell +1, mert 0-át nem lehet kockán dobni
-        opponent.health -= r.nextInt(6) + 1;
+        this.health -= r.nextInt(6) + 1;  // d6 damage
+        ((Character) opponent).health -= r.nextInt(6) + 1; // d6 damage
     }
 
     public int getHealth() {
