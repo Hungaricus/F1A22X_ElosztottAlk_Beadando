@@ -9,10 +9,14 @@ public class Game {
 
     public void play() {
         try {
+
+            System.out.println("Kezdőélet: H: " + warrior.getHealth() + ", V: " + wizard.getHealth());
+
             while (warrior.getHealth() > 0 && wizard.getHealth() > 0) {
                 warrior.move();
                 wizard.move();
                 String positions = "";
+
                 for (int i = 0; i < 3; i++) {
                     if (warrior.getPosition() == i && wizard.getPosition() == i) {
                         positions += "X";  // mindkettő ugyan ott van és harcol
